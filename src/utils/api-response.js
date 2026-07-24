@@ -8,4 +8,4 @@ class APiResponse {
 }
 
 
-export default app;
+export default APiResponse;

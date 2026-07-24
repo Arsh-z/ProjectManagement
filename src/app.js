@@ -21,12 +21,16 @@ app.use(cors({
 );
 
 //import routes 
-import healthCheckRouter from "./routes/healthcheck.routes.js";
+import router from "./routes/healthcheck.route.js";
 
-app.use("api/v1/healthcheck", healthCheckRouter);
+app.use("api/v1/healthcheck", router);
 
 app.get('/', (req, res) => {
   res.send('welcome to base campy')
+})
+
+app.get('/health', (req, res) => {
+  res.send("hello from arsh")
 })
 
 
