@@ -5,7 +5,25 @@ import { asyncHandler } from "../utils/async-handler.js";
 import { sendEmail } from "../utils/mail.js";
 
 
+const generateAccessAndRefreshTokens = async (userId) => {
+    try {
+        const user = await User.findById(userId)
+        
+        const accessToken = user.generateAccessToken();
+        const refreshToken = user.generaterefreshToken();
 
+        user.refreshToken = refreshToken
+        await user.save({ validateBeforeSave: false })
+        return { accessToken, refreshToken }
+
+
+    } catch (error) {
+        throw new ApiError(
+            500,
+            "something went wrong while generating access token",
+        );
+    }  
+};
 
 const registerUser = asyncHandler(async(req, res) => {
     const { email, username, password, role } = req.body;
