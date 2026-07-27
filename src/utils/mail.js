@@ -9,7 +9,7 @@ const sendEmail = async (options) => {
         product: {
             name: "Task Manager",
             link: "https//taskmanagelink.com"
-        };
+        },
     });
 
     
@@ -20,11 +20,11 @@ const sendEmail = async (options) => {
     const transporter = nodemailer.createTransport({
         host: process.env.MAILTRAP_SMTP_HOST,
         port: process.env.MAILTRAP_SMTP_PORT,
-        auth{
+        auth :{
         user: process.env.MAILTRAP_SMTP_USER,
         pass: process.env.MAILTRAP_SMTP_PASS
-        };
-    });
+        },
+    })
 
     const mail = {
     from: "mail.taskmanager@example.com",
@@ -51,10 +51,8 @@ const emailVerificationMailgenContent = (username, verificationUrl) => {
         body: {
             name: username,
             intro: "welcome to our app,we are excited to have youi on board",
-
             action: {
                 instruction: "to verify your email please click on the following button",
-
                 button: {
                     color: "#258948",
                     text: "verify your email",
@@ -63,11 +61,9 @@ const emailVerificationMailgenContent = (username, verificationUrl) => {
                 },
             },
             outro: "need help ot have question?just reply to thid email"
-            
-        },
-
-    },
-},
+        }
+    }
+}
 
 const forgotPasswordMailgenContent = (username, passwordResetUrl) => {
     return {
@@ -89,8 +85,8 @@ const forgotPasswordMailgenContent = (username, passwordResetUrl) => {
             
         },
 
-    },
-},
+    }
+}
 
 export {
     emailVerificationMailgenContent,

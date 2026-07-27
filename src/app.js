@@ -23,7 +23,10 @@ app.use(cors({
 //import routes 
 import router from "./routes/healthcheck.route.js";
 
+import authRouter from "./routes/auth.routes.js"
+
 app.use("api/v1/healthcheck", router);
+app.use("api/v1/auth", authRouter);
 
 app.get('/', (req, res) => {
   res.send('welcome to base campy')
