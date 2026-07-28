@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { registerUser } from "./controllers/auth.controller.js";
 const app = express(); 
 
 //basic configuration
@@ -25,8 +26,10 @@ import router from "./routes/healthcheck.route.js";
 
 import authRouter from "./routes/auth.routes.js"
 
-app.use("api/v1/healthcheck", router);
-app.use("api/v1/auth", authRouter);
+// app.use("api/v1/healthcheck", router);
+// app.use("api/v1/auth", authRouter);
+
+app.post('/register',registerUser)
 
 app.get('/', (req, res) => {
   res.send('welcome to base campy')
