@@ -13,4 +13,3 @@ export const TaskStatusEnum = {
 }
 
 export const AvailableTaskStatus = Object.values(TaskStatusEnum)
-console.log(arsh)
