@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { registerUser } from "./controllers/auth.controller.js";
+//import { registerUser } from "./controllers/auth.controller.js";
 import cookieParser from "cookie-parser";
 const app = express(); 
 
@@ -25,22 +25,24 @@ app.use(cors({
 );
 
 //import routes 
-import router from "./routes/healthcheck.route.js";
-
+//import router from "./routes/healthcheck.route.js";
+import healthCheckRouter  from "./routes/auth.routes.js";
 import authRouter from "./routes/auth.routes.js"
+//import projectRouter from "./routes/project.routes.js"
+//import projectRouter from "./routes/project.routes.js";
 
-// app.use("api/v1/healthcheck", router);
-// app.use("api/v1/auth", authRouter);
+//app.use("api/v1/projects", projectRouter);
+app.use("api/v1/healthcheck", healthCheckRouter);
+app.use("api/v1/auth", authRouter);
+//app.use("api/v1/projects", projectRouter);
 
-app.post('/register',registerUser)
+//app.post('/register',registerUser)
 
 app.get('/', (req, res) => {
   res.send('welcome to base campy')
 })
 
-app.get('/health', (req, res) => {
-  res.send("hello from arsh")
-})
+
 
 
 export default app;
